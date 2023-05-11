@@ -26,6 +26,28 @@ int LineNumber(char* filename){
     return length;
 }
 
+int LineNumber2col(char* filename){
+    FILE* f;
+    f=fopen(filename,"r");
+
+    if(f==NULL){
+        return 1;
+    }
+
+    double data;
+    int length=0;
+    int end;
+
+    do{
+        end=fscanf(f, "%lf %lf", &data, &data);
+        length++;
+    }
+    while(end!=-1);
+    length--;
+    fclose(f);
+    return length;
+}
+
 int readData(int length, double* data, char* filename){
     FILE* f;
     f=fopen(filename,"r");
@@ -36,6 +58,21 @@ int readData(int length, double* data, char* filename){
 
     for(int i=0; i<length;i++) {
         fscanf(f, "%lf", &data[i]);
+    }
+    fclose(f);
+    return 0;
+}
+
+int readData2col(int length, double* col1, double* col2, char* filename){
+    FILE* f;
+    f=fopen(filename,"r");
+
+    if(f==NULL){
+        return 1;
+    }
+
+    for(int i=0; i<length;i++) {
+        fscanf(f, "%lf %lf", &col1[i], &col2[i]);
     }
     fclose(f);
     return 0;

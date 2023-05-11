@@ -21,7 +21,7 @@ int generateDFTCore(ExpComplex ** Core, int L)
     return 0;
 }
 
-int MatrixVectorMultiplication(ExpComplex** Core, double* data, int L, RectComplex* FT)
+int MatrixVectorMultiplication(ExpComplex** Core, RectComplex* data, int L, RectComplex* FT)
 {
     int i,j;
     RectComplex rectCoreValue;
@@ -30,13 +30,10 @@ int MatrixVectorMultiplication(ExpComplex** Core, double* data, int L, RectCompl
         FT[i].a=0;
         FT[i].b=0;
 
-
-
         for (j = 0; j < L; j++) {
             rectCoreValue=toRectCplx(Core[i][j]);
             RectComplex datacplx;
-            datacplx.a=data[j];
-            datacplx.b=0;
+            datacplx=data[j];
 
             FT[i]=sumRect(FT[i] , multRect(rectCoreValue, datacplx));
 
@@ -47,7 +44,7 @@ int MatrixVectorMultiplication(ExpComplex** Core, double* data, int L, RectCompl
     return 0;
 }
 
-int DFT(double* data,int L, RectComplex* FT, double* FreqAxis, double SamplingFreq){
+int DFT(RectComplex* data,int L, RectComplex* FT, double* FreqAxis, double SamplingFreq){
 
     ExpComplex** Core = (ExpComplex **)malloc(L*sizeof(ExpComplex*));
     for(int j=0; j<L; j++){
@@ -68,4 +65,3 @@ int DFT(double* data,int L, RectComplex* FT, double* FreqAxis, double SamplingFr
     free(Core);
     return 0;
 }
-

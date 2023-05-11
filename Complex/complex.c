@@ -55,6 +55,15 @@ RectComplex sumRect(RectComplex x, RectComplex y){
     return z;
 }
 
+RectComplex subRect(RectComplex x, RectComplex y){
+
+    RectComplex z;
+    z.a=x.a-y.a;
+    z.b=x.b-y.b;
+
+    return z;
+}
+
 ExpComplex sumExp(ExpComplex x, ExpComplex y){
     ExpComplex z;
     RectComplex u,v,w;
@@ -77,3 +86,11 @@ RectComplex multRect(RectComplex x, RectComplex y){
     return z;
 }
 
+int RtoC(double* in, RectComplex* out, int L){
+    int i;
+    for(i=0; i<L; i++){
+        out[i].a=in[i];
+        out[i].b=0.0;
+    }
+    return 0;
+}

@@ -12,9 +12,9 @@ int main()
 
     y=toExpCplx(x);
 
-    printf("%lf %lf\n", y.modulus, y.argument);
+    printf("%lf %lf\n", y.mod, y.argument);
 
-    y.modulus=56;
+    y.mod=56;
     y.argument=PI/6.0;
 
     x=toRectCplx(y);

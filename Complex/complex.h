@@ -23,6 +23,9 @@ double modulusRect(RectComplex in);
 RectComplex multRect(RectComplex x, RectComplex y);
 ExpComplex sumExp(ExpComplex x, ExpComplex y);
 RectComplex sumRect(RectComplex x, RectComplex y);
+RectComplex subRect(RectComplex x, RectComplex y);
+
+int RtoC(double* in, RectComplex* out, int L);
 
 
 #endif // COMPLEX_H_INCLUDED
